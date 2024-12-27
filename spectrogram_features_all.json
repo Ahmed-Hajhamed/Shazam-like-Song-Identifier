@@ -1,0 +1,121 @@
+{
+    "Let Her Go (Instrumental).wav": {
+        "spectral_centroid": 422.5771959912315,
+        "spectral_bandwidth": 461.1375018217199,
+        "spectral_contrast": 26.482327072256236,
+        "spectral_flatness": 1.7053025658242404e-06,
+        "rms_energy": 0.027554191648960114
+    },
+    "Let Her Go (Original).wav": {
+        "spectral_centroid": 1827.5198293128553,
+        "spectral_bandwidth": 2178.13527627372,
+        "spectral_contrast": 20.93099946551622,
+        "spectral_flatness": 0.012188157998025417,
+        "rms_energy": 0.07090647518634796
+    },
+    "Let Her Go (Vocals).wav": {
+        "spectral_centroid": 2007.746283175467,
+        "spectral_bandwidth": 2010.9562237352022,
+        "spectral_contrast": 23.46096562940796,
+        "spectral_flatness": 0.15165455639362335,
+        "rms_energy": 0.05114752799272537
+    },
+    "Shake It Out (instruments).wav": {
+        "spectral_centroid": 1758.2566899161766,
+        "spectral_bandwidth": 2243.665425399436,
+        "spectral_contrast": 23.786207835123427,
+        "spectral_flatness": 0.006559854373335838,
+        "rms_energy": 0.09333369135856628
+    },
+    "Shake It Out (lyrics).wav": {
+        "spectral_centroid": 2898.5382759245713,
+        "spectral_bandwidth": 2252.8249554858066,
+        "spectral_contrast": 26.66713630906988,
+        "spectral_flatness": 0.01315772719681263,
+        "rms_energy": 0.07596740126609802
+    },
+    "Shake It Out (Original).wav": {
+        "spectral_centroid": 2343.1339310203575,
+        "spectral_bandwidth": 2449.6529930679617,
+        "spectral_contrast": 25.2830610724137,
+        "spectral_flatness": 0.009376563131809235,
+        "rms_energy": 0.13685597479343414
+    },
+    "Stan(instrumental).wav": {
+        "spectral_centroid": 2032.612059109107,
+        "spectral_bandwidth": 2499.947767582922,
+        "spectral_contrast": 22.46473610885305,
+        "spectral_flatness": 0.007120023015886545,
+        "rms_energy": 0.14471957087516785
+    },
+    "Stan(Original).wav": {
+        "spectral_centroid": 2433.593283706401,
+        "spectral_bandwidth": 2755.9737622493235,
+        "spectral_contrast": 17.808674843388165,
+        "spectral_flatness": 0.0187454205006361,
+        "rms_energy": 0.1686604768037796
+    },
+    "Stan(vocals).wav": {
+        "spectral_centroid": 3612.637799875073,
+        "spectral_bandwidth": 2841.528718267508,
+        "spectral_contrast": 25.05556443349722,
+        "spectral_flatness": 0.04183996841311455,
+        "rms_energy": 0.03315858170390129
+    },
+    "sweetdreams(instruments).wav": {
+        "spectral_centroid": 1540.7807439272806,
+        "spectral_bandwidth": 1962.2206013942653,
+        "spectral_contrast": 24.921668117515285,
+        "spectral_flatness": 0.0053163073025643826,
+        "rms_energy": 0.0435795895755291
+    },
+    "sweetdreams(lyrics).wav": {
+        "spectral_centroid": 3673.0912572241373,
+        "spectral_bandwidth": 2681.648620701459,
+        "spectral_contrast": 23.892844613733654,
+        "spectral_flatness": 0.07194551825523376,
+        "rms_energy": 0.022611893713474274
+    },
+    "sweetdreams(original).wav": {
+        "spectral_centroid": 2541.6812187922956,
+        "spectral_bandwidth": 2412.497689419766,
+        "spectral_contrast": 25.224069636463085,
+        "spectral_flatness": 0.01923305168747902,
+        "rms_energy": 0.055539291352033615
+    },
+    "Wish You Were Here (Instruments).wav": {
+        "spectral_centroid": 1363.2279309204469,
+        "spectral_bandwidth": 1794.8036654560503,
+        "spectral_contrast": 22.813311622440185,
+        "spectral_flatness": 0.0029536455404013395,
+        "rms_energy": 0.02012774534523487
+    },
+    "Wish You Were Here (Vocals).wav": {
+        "spectral_centroid": 2546.019832640493,
+        "spectral_bandwidth": 2558.0870576569937,
+        "spectral_contrast": 19.722033911333707,
+        "spectral_flatness": 0.0492093563079834,
+        "rms_energy": 0.02350875735282898
+    },
+    "Wish You Were Here.wav": {
+        "spectral_centroid": 1721.518863817712,
+        "spectral_bandwidth": 2134.2291222386243,
+        "spectral_contrast": 22.418419788919206,
+        "spectral_flatness": 0.009234982542693615,
+        "rms_energy": 0.03622313216328621
+    },
+    "y2mate.com - Eminem  Stan Short Version ft Dido (1) [music].wav": {
+        "spectral_centroid": 2032.612059109107,
+        "spectral_bandwidth": 2499.947767582922,
+        "spectral_contrast": 22.46473610885305,
+        "spectral_flatness": 0.007120023015886545,
+        "rms_energy": 0.14471957087516785
+    },
+    "y2mate.com - Eminem  Stan Short Version ft Dido (1) [vocals].wav": {
+        "spectral_centroid": 3612.637799875073,
+        "spectral_bandwidth": 2841.528718267508,
+        "spectral_contrast": 25.05556443349722,
+        "spectral_flatness": 0.04183996841311455,
+        "rms_energy": 0.03315858170390129
+    }
+}
