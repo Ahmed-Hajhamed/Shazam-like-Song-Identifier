@@ -51,7 +51,7 @@ class Main(UI.Ui_MainWindow, QMainWindow):
 
                 average_difference = ((mel_spectrogram_difference + mfcc_feature_difference + chroma_stft_feature_difference)/3)
 
-                similarity_index = (1 - average_difference/255)*100
+                similarity_index = (1 - average_difference/255) * 100
                 similarity_indices.append([self.song_names[i] , similarity_index])
 
             similarity_indices.sort(key=lambda x:x[1])

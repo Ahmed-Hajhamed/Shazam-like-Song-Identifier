@@ -12,8 +12,13 @@ class Graph():
         self.plot_widget.setBackground('#2E2E2E')  
         self.audio = AudioFile.AudioFile()
         self.media_player = MediaPlayer.AudioPlayerWidget()
+        self.media_player.media_player.positionChanged.connect(self.update_shading_region)
         self.layout = QVBoxLayout()
         self.title_label = QLabel("Song")
+
+        self.shading_region = pg.LinearRegionItem([0, 0], brush=(50, 50, 200, 50), pen="r")
+        self.shading_region.setMovable(False)
+        self.plot_widget.addItem(self.shading_region)
 
         self.layout.addWidget(self.title_label)
         self.layout.addWidget(self.plot_widget)
@@ -25,6 +30,7 @@ class Graph():
         self.audio.load_song()
         if self.audio.time_data is not None and self.audio.audio is not None:
             self.plot_widget.clear()
+            self.plot_widget.addItem(self.shading_region)
             self.plot_widget.plot(self.audio.time_data, self.audio.audio, pen = '#df78ef')    
             self.media_player.update_song(self.audio.file_path)    
             self.title_label.setText(self.audio.song_name)
@@ -59,6 +65,14 @@ class Graph():
                 yMin = y_min, yMax = 1.5 * y_max
             )
             
+    def update_shading_region(self, value):
+        """Update playback line and shading region."""
+        current_time = value/1000
+        self.shading_region.setRegion([0, current_time])
+    
+    def reset_shading_region(self):
+        self.shading_region.setRegion([0, 0])
+
 
 class CustomPlotWidget(pg.PlotWidget):
     def __init__(self, graph, parent=None):
