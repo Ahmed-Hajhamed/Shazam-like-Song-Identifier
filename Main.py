@@ -18,6 +18,7 @@ class Main(UI.Ui_MainWindow, QMainWindow):
                                         self.song_2_graph.audio.audio * (1 - self.weights_slider.value()/ 100.0)
 
     def detect_song(self):
+        self.mix_songs()
         similarity_indices = []
         mixed_song_mel_spectrogram, mixed_song_mfcc_feature, mixed_song_chroma_stft_feature =\
                                                      extract_fratures(audio= self.mixed_audio)
@@ -44,14 +45,13 @@ class Main(UI.Ui_MainWindow, QMainWindow):
 
         similarity_indices.sort(key=lambda x:x[1])
         self.similarity_indices = list(reversed(similarity_indices))
+        self.show_results()
 
     def show_results(self):
             for row in range(10):
                 self.tableWidget.setItem(row, 0, QTableWidgetItem(self.similarity_indices[row][0]))
                 self.tableWidget.setItem(row, 1, QTableWidgetItem(str(round(self.similarity_indices[row][1], 2)) + "%"))
                 self.tableWidget.verticalHeader().setSectionResizeMode(row, QHeaderView.Stretch)
-
-            self.tableWidget.setHorizontalHeaderLabels(["Found Matches", "Percentage"])
 
             for col in range(2):
                 self.tableWidget.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)

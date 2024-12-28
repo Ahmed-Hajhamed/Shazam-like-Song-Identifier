@@ -23,7 +23,7 @@ class Graph():
 
     def load_audio(self):
         self.audio.load_song()
-        self.remove_old_curve()
+        # self.plot_widget.removeItem()
 
         self.plot_widget.plot(self.audio.time_data, self.audio.audio)        
         self.plot_widget.plot(self.audio.time_data, self.audio.audio)

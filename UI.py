@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
         self.tableWidget = QTableWidget()
         self.tableWidget.setRowCount(10)
         self.tableWidget.setColumnCount(2)
-        self.tableWidget.setHorizontalHeaderLabels(["Song", "Similarity"])
+        self.tableWidget.setHorizontalHeaderLabels(["Songs", "Similarity Percentage"])
 
         self.line_1 =  create_line(horizontal= True)
         self.line_2 =  create_line()

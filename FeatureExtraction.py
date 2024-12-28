@@ -9,9 +9,11 @@ mel_spectrograms = []
 mfcc_features = []
 chroma_features = []
 
-def extract_fratures(song_path):
-    song_name =  (os.path.splitext(os.path.basename(song_path))[0])
-    audio, sampling_rate = librosa.load(song_path)
+def extract_fratures(song_path= None, audio = None, sampling_rate = 22050):
+    song_name = ""
+    if song_path is not None:
+        song_name =  (os.path.splitext(os.path.basename(song_path))[0])
+        audio, sampling_rate = librosa.load(song_path, duration= 30)
 
     mel_spectrogram = librosa.feature.melspectrogram(y=audio, sr=sampling_rate)
     mfcc_feature = librosa.feature.mfcc(y=audio, sr=sampling_rate)
@@ -45,4 +47,4 @@ def hash_feature(feature):
     hashed_feature = imagehash.phash((Image.fromarray(feature)), hash_size=16).__str__()
     return hashed_feature
 
-process_folder("Songs\\all")
+# process_folder("C:\\Users\\VICTUS\\Desktop\\Task 5 Data")
