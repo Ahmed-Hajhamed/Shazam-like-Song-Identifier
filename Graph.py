@@ -16,19 +16,18 @@ class Graph():
     def __init__(self, centralWidget):
         super().__init__()
         self.plot_widget = CustomPlotWidget(self, centralWidget)
-        self.plot_widget.setFixedHeight(200)
+        self.plot_widget.setBackground('#2E2E2E')  
+        self.plot_widget.setMinimumHeight(300)
         self.audio = AudioFile.AudioFile()
         self.is_paused = False
         self.is_off = False
 
     def load_audio(self):
         self.audio.load_song()
-        # self.plot_widget.removeItem()
-
-        self.plot_widget.plot(self.audio.time_data, self.audio.audio)        
-        self.plot_widget.plot(self.audio.time_data, self.audio.audio)
-        self.set_plot_limits()
-
+        if self.audio.time_data is not None and self.audio.audio is not None:
+            self.plot_widget.clear()
+            self.plot_widget.plot(self.audio.time_data, self.audio.audio, pen = '#df78ef')        
+            # self.set_plot_limits()
 
     def play_pause(self, play_pause_button):
         if self.is_paused:
@@ -50,11 +49,11 @@ class Graph():
             y_min = min(self.audio.audio)
             y_max = max(self.audio.audio)
 
-            y_min = y_min - y_min * 0.05 if y_min > 0 else y_min + y_min * 0.05
+            y_min = y_min - y_min * 0.8 if y_min > 0 else y_min + y_min * 0.8
 
             self.plot_widget.setLimits(
-                xMin = -0.1, xMax = x_max + 0.1,
-                yMin = y_min, yMax = y_max + y_max * 0.05
+                xMin = -0.5, xMax = 2 * x_max,
+                yMin = y_min, yMax = 1.5 * y_max
             )
             
 

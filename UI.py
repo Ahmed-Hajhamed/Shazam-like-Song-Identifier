@@ -33,6 +33,9 @@ class Ui_MainWindow(object):
         self.song_1_label = QLabel("Song 1")
         self.song_2_label = QLabel("Song 2")
         
+        self.song_1_label.setFixedHeight(30)
+        self.song_2_label.setFixedHeight(30)
+
         self.weights_slider = QSlider()
         self.weights_slider.setOrientation(Qt.Horizontal)
         self.weights_slider.setMaximum(100)

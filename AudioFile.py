@@ -8,6 +8,7 @@ class AudioFile:
     def __init__(self):
         self.audio = None
         self.sampling_rate = None
+        self.time_data = None
         self.song_name = "Song"
     
     def load_song(self):
