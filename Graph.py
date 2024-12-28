@@ -1,24 +1,23 @@
 import pyqtgraph as pg
-from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtCore import  QSize
-import numpy as np
+from PyQt5.QtWidgets import QVBoxLayout, QLabel
+import MediaPlayer
 import AudioFile
 
-def set_icon(button, icon_path):
-    pixmap = QPixmap(icon_path)
-    button.setIcon(QIcon(pixmap))
-    button.setIconSize(QSize(30, 30))
-    button.setFixedSize(30, 30)
-    button.setStyleSheet("border: none; background-color: none;")
 
 class Graph():
-
-    def __init__(self, centralWidget):
+    def __init__(self, MainWindow, centralWidget):
         super().__init__()
+        self.MainWindow = MainWindow
         self.plot_widget = CustomPlotWidget(self, centralWidget)
         self.plot_widget.setBackground('#2E2E2E')  
-        self.plot_widget.setMinimumHeight(300)
         self.audio = AudioFile.AudioFile()
+        self.media_player = MediaPlayer.AudioPlayerWidget()
+        self.layout = QVBoxLayout()
+        self.title_label = QLabel("Song")
+
+        self.layout.addWidget(self.title_label)
+        self.layout.addWidget(self.plot_widget)
+        self.layout.addWidget(self.media_player)
         self.is_paused = False
         self.is_off = False
 
@@ -26,8 +25,12 @@ class Graph():
         self.audio.load_song()
         if self.audio.time_data is not None and self.audio.audio is not None:
             self.plot_widget.clear()
-            self.plot_widget.plot(self.audio.time_data, self.audio.audio, pen = '#df78ef')        
-            # self.set_plot_limits()
+            self.plot_widget.plot(self.audio.time_data, self.audio.audio, pen = '#df78ef')    
+            self.media_player.update_song(self.audio.file_path)    
+            self.title_label.setText(self.audio.song_name)
+            self.set_plot_limits()
+            self.MainWindow.detect_song()
+            self.MainWindow.update_weights_label(self.MainWindow.weights_slider.value())
 
     def play_pause(self, play_pause_button):
         if self.is_paused:
