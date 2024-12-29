@@ -62,7 +62,7 @@ class Graph():
 
             self.plot_widget.setLimits(
                 xMin = -0.5, xMax = 2 * x_max,
-                yMin = y_min, yMax = 1.5 * y_max
+                yMin = 1.2 * y_min, yMax = 1.2 * y_max
             )
             
     def update_shading_region(self, value):

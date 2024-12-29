@@ -28,13 +28,18 @@ class Main(UI.Ui_MainWindow, QMainWindow):
     def mix_songs(self):
         if self.song_1_graph.audio.audio is None:
             self.mixed_audio =  self.song_2_graph.audio.audio
+            self.weights_slider.setValue(0)
+            self.weights_slider.setDisabled(True)
 
         elif  self.song_2_graph.audio.audio is None:
             self.mixed_audio =  self.song_1_graph.audio.audio
+            self.weights_slider.setValue(100)
+            self.weights_slider.setDisabled(True)
 
         else:
             self.mixed_audio = self.song_1_graph.audio.audio * self.weights_slider.value()/ 100.0 + \
                                         self.song_2_graph.audio.audio * (1 - self.weights_slider.value()/ 100.0)
+            self.weights_slider.setEnabled(True)
 
     def detect_song(self):
         self.mix_songs()
