@@ -1,0 +1,7 @@
+librosa==0.10.2.post1
+PyQt5==5.15.11
+numpy==2.0.2
+pyqtgraph==0.13.7
+qt_material==2.14
+ImageHash==4.3.1
+pandas==2.2.3
