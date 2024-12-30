@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import(QLabel, QGridLayout, QFrame, QSlider, QPushButton, QTableWidget, QWidget, QSizePolicy)
+from PyQt5.QtWidgets import(QLabel, QGridLayout, QFrame, QSlider, QTableWidget, QWidget, QSizePolicy)
 
 import Graph
 

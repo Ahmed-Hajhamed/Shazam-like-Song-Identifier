@@ -14,7 +14,7 @@ class Graph():
         self.media_player = MediaPlayer.AudioPlayerWidget()
         self.media_player.media_player.positionChanged.connect(self.update_shading_region)
         self.layout = QVBoxLayout()
-        self.title_label = QLabel("Song")
+        self.title_label = QLabel("Double-click To Load a Song")
 
         self.shading_region = pg.LinearRegionItem([0, 0], brush=(50, 50, 200, 50), pen="r")
         self.shading_region.setMovable(False)
@@ -38,18 +38,6 @@ class Graph():
             self.MainWindow.detect_song()
             self.MainWindow.update_weights_label(self.MainWindow.weights_slider.value())
 
-    def play_pause(self, play_pause_button):
-        if self.is_paused:
-            # set_icon(play_pause_button, "icons\pause.png")
-            play_pause_button.setText("PAUSE")
-        else:
-            # set_icon(play_pause_button, "icons/play.png")
-            play_pause_button.setText("PLAY")
-        self.is_paused = not self.is_paused
-
-    def off_signal(self):
-        self.graph_1.setLimits(xMin=0, xMax=2, yMin=-2, yMax=2)
-
     def set_plot_limits(self):
         """Set the plot limits based on the loaded data."""
         if len(self.audio.time_data)>0:
@@ -58,7 +46,7 @@ class Graph():
             y_min = min(self.audio.audio)
             y_max = max(self.audio.audio)
 
-            y_min = y_min - y_min * 0.8 if y_min > 0 else y_min + y_min * 0.8
+            y_min = y_min - y_min * 0.2 if y_min > 0 else y_min + y_min * 0.2
 
             self.plot_widget.setLimits(
                 xMin = -0.5, xMax = 2 * x_max,
