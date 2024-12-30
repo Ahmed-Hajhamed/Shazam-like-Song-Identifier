@@ -23,7 +23,7 @@ A Python desktop application that identifies songs and enables users to mix song
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/repo-name.git
+   https://github.com/Ahmed-Hajhamed/Shazam-like-Song-Identifier
 
 2. Install dependencies:
     ```bash
@@ -57,11 +57,13 @@ pandas
 ## Screenshots
 
 **Load Songs By Double-Clicking on Graphs**
-![alt text](<Python 3.11 12_30_2024 11_28_22 PM-1.png>)
+![Python 3 11 12_30_2024 11_28_22 PM](https://github.com/user-attachments/assets/78cb942b-21a5-44cc-a3d2-176bd2c7bfd7)
+
 **Adjust The Weight of Each Song**
-![alt text](<Python 3.11 12_30_2024 11_30_05 PM.png>)
+![Python 3 11 12_30_2024 11_30_05 PM](https://github.com/user-attachments/assets/23506d94-4489-4406-b30c-1d81e7f77cb1)
+
 **Interactive Media Player**
-![alt text](<Python 3.11 12_30_2024 11_28_35 PM.png>)
+![Python 3 11 12_30_2024 11_28_35 PM](https://github.com/user-attachments/assets/da41ea4c-9453-41a7-a2c0-cceca1c1b16d)
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or bug fixes.
