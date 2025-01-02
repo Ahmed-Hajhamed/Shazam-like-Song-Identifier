@@ -26,19 +26,19 @@ class Main(UI.Ui_MainWindow, QMainWindow):
             self.chroma_stft_features.append(coloumn[3])
 
     def mix_songs(self):
-        if self.song_1_graph.audio.audio is None:
-            self.mixed_audio =  self.song_2_graph.audio.audio
+        if self.song_1_graph.audio_file.audio_data is None:
+            self.mixed_audio =  self.song_2_graph.audio_file.audio_data
             self.weights_slider.setValue(0)
             self.weights_slider.setDisabled(True)
 
-        elif  self.song_2_graph.audio.audio is None:
-            self.mixed_audio =  self.song_1_graph.audio.audio
+        elif  self.song_2_graph.audio_file.audio_data is None:
+            self.mixed_audio =  self.song_1_graph.audio_file.audio_data
             self.weights_slider.setValue(100)
             self.weights_slider.setDisabled(True)
 
         else:
-            self.mixed_audio = self.song_1_graph.audio.audio * self.weights_slider.value()/ 100.0 + \
-                                        self.song_2_graph.audio.audio * (1 - self.weights_slider.value()/ 100.0)
+            self.mixed_audio = self.song_1_graph.audio_file.audio_data * self.weights_slider.value()/ 100.0 + \
+                                        self.song_2_graph.audio_file.audio_data * (1 - self.weights_slider.value()/ 100.0)
             self.weights_slider.setEnabled(True)
 
     def detect_song(self):

@@ -9,42 +9,42 @@ class Graph():
         super().__init__()
         self.MainWindow = MainWindow
         self.plot_widget = CustomPlotWidget(self, centralWidget)
-        self.plot_widget.setBackground('#2E2E2E')  
-        self.audio = AudioFile.AudioFile()
+        self.audio_file = AudioFile.AudioFile()
         self.media_player = MediaPlayer.AudioPlayerWidget()
-        self.media_player.media_player.positionChanged.connect(self.update_shading_region)
         self.layout = QVBoxLayout()
         self.title_label = QLabel("Double-click To Load a Song")
-
         self.shading_region = pg.LinearRegionItem([0, 0], brush=(50, 50, 200, 50), pen="r")
+
         self.shading_region.setMovable(False)
         self.plot_widget.addItem(self.shading_region)
+        self.media_player.media_player.positionChanged.connect(self.update_shading_region)
 
+        self.plot_widget.setBackground('#2E2E2E')  
         self.layout.addWidget(self.title_label)
         self.layout.addWidget(self.plot_widget)
         self.layout.addWidget(self.media_player)
         self.is_paused = False
         self.is_off = False
 
-    def load_audio(self):
-        self.audio.load_song()
-        if self.audio.time_data is not None and self.audio.audio is not None:
+    def load_audio(self, path = None):
+        self.audio_file.load_song(path)
+        if self.audio_file.time_data is not None and self.audio_file.audio_data is not None:
             self.plot_widget.clear()
             self.plot_widget.addItem(self.shading_region)
-            self.plot_widget.plot(self.audio.time_data, self.audio.audio, pen = '#df78ef')    
-            self.media_player.update_song(self.audio.file_path)    
-            self.title_label.setText(self.audio.song_name)
+            self.plot_widget.plot(self.audio_file.time_data, self.audio_file.audio_data, pen = '#df78ef')    
+            self.media_player.update_song(self.audio_file.file_path)    
+            self.title_label.setText(self.audio_file.song_name)
             self.set_plot_limits()
             self.MainWindow.detect_song()
             self.MainWindow.update_weights_label(self.MainWindow.weights_slider.value())
 
     def set_plot_limits(self):
         """Set the plot limits based on the loaded data."""
-        if len(self.audio.time_data)>0:
-            x_max = self.audio.time_data[-1]
+        if len(self.audio_file.time_data)>0:
+            x_max = self.audio_file.time_data[-1]
 
-            y_min = min(self.audio.audio)
-            y_max = max(self.audio.audio)
+            y_min = min(self.audio_file.audio_data)
+            y_max = max(self.audio_file.audio_data)
 
             y_min = y_min - y_min * 0.2 if y_min > 0 else y_min + y_min * 0.2
 

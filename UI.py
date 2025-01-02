@@ -72,8 +72,8 @@ class Ui_MainWindow(object):
         self.setCentralWidget(self.centralwidget)
 
     def update_weights_label(self, value):
-        self.song_1_weight_label.setText(f"{self.song_1_graph.audio.song_name} {value}%")
-        self.song_2_weight_label.setText(f"{100 - value}% {self.song_2_graph.audio.song_name}")
+        self.song_1_weight_label.setText(f"{self.song_1_graph.audio_file.song_name} {value}%")
+        self.song_2_weight_label.setText(f"{100 - value}% {self.song_2_graph.audio_file.song_name}")
 
 def create_line(horizontal = False, thick = True):
         line = QFrame() 
