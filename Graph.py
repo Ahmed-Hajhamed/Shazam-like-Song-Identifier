@@ -26,30 +26,34 @@ class Graph():
         self.is_paused = False
         self.is_off = False
 
-    def load_audio(self, path = None):
+    def load_audio(self, path: str = None):
         self.audio_file.load_song(path)
         if self.audio_file.time_data is not None and self.audio_file.audio_data is not None:
             self.plot_widget.clear()
             self.plot_widget.addItem(self.shading_region)
-            self.plot_widget.plot(self.audio_file.time_data, self.audio_file.audio_data, pen = '#df78ef')    
+            self.plot_widget.plot(self.audio_file.time_data, self.audio_file.audio_data, pen = '#DF78EF')    
             self.media_player.update_song(self.audio_file.file_path)    
             self.title_label.setText(self.audio_file.song_name)
             self.set_plot_limits()
+
             self.MainWindow.detect_song()
             self.MainWindow.update_weights_label(self.MainWindow.weights_slider.value())
 
     def set_plot_limits(self):
         """Set the plot limits based on the loaded data."""
         if len(self.audio_file.time_data)>0:
-            x_max = self.audio_file.time_data[-1]
+            x_max = self.audio_file.duration
 
             y_min = min(self.audio_file.audio_data)
             y_max = max(self.audio_file.audio_data)
 
+            y_min = truncate_to_3_decimals(y_min) # Truncate to 3 decimal points in order not to raise a warning
+            y_max = truncate_to_3_decimals(y_max) # in plot_widget.setLimits()
+
             y_min = y_min - y_min * 0.2 if y_min > 0 else y_min + y_min * 0.2
 
             self.plot_widget.setLimits(
-                xMin = -0.5, xMax = 2 * x_max,
+                xMin = -0.5, xMax = 1.5 * x_max,
                 yMin = 1.2 * y_min, yMax = 1.2 * y_max
             )
             
@@ -61,6 +65,8 @@ class Graph():
     def reset_shading_region(self):
         self.shading_region.setRegion([0, 0])
 
+def truncate_to_3_decimals(number):
+    return int(number * 1000) / 1000
 
 class CustomPlotWidget(pg.PlotWidget):
     def __init__(self, graph, parent=None):

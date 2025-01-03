@@ -8,20 +8,21 @@ class AudioFile:
     def __init__(self):
         self.file_path = None
         self.audio_data = None
-        self.sampling_rate = None
+        self.sampling_rate = 22050
         self.time_data = None
+        self.duration: int = 30
         self.song_name = "Song"
     
-    def load_song(self, path = None):
+    def load_song(self, path: str = None):
         if path is None:
             file_path, _ = QFileDialog.getOpenFileName(
-                None,  "Open File", "", "Audio (*.wav *.mp3)"
+                None,  "Open File", "Task 5 Data", "Audio (*.wav *.mp3)"
             )
             self.file_path = file_path
             
         else: self.file_path = path
 
         if self.file_path:
-            self.audio_data, self.sampling_rate = librosa.load(self.file_path, duration= 30)
+            self.audio_data, self.sampling_rate = librosa.load(self.file_path, duration = self.duration, sr= self.sampling_rate)
             self.song_name =  (os.path.splitext(os.path.basename(self.file_path))[0])
             self.time_data = np.linspace(0, len(self.audio_data)/ self.sampling_rate, len(self.audio_data))

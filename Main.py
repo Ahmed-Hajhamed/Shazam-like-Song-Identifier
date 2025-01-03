@@ -11,6 +11,7 @@ class Main(UI.Ui_MainWindow, QMainWindow):
         super().__init__()
         self.setup_UI(self)
         self.mixed_audio = None
+        self.number_of_songs: int = 0
         self.weights_slider.sliderReleased.connect(self.detect_song)
         self.load_database()
 
@@ -26,20 +27,26 @@ class Main(UI.Ui_MainWindow, QMainWindow):
             self.chroma_stft_features.append(coloumn[3])
 
     def mix_songs(self):
-        if self.song_1_graph.audio_file.audio_data is None:
+        if self.song_1_graph.audio_file.audio_data is None and self.song_2_graph.audio_file.audio_data is not None:
             self.mixed_audio =  self.song_2_graph.audio_file.audio_data
             self.weights_slider.setValue(0)
             self.weights_slider.setDisabled(True)
+            self.number_of_songs = 1
 
-        elif  self.song_2_graph.audio_file.audio_data is None:
+        elif  self.song_2_graph.audio_file.audio_data is None and self.song_1_graph.audio_file.audio_data is not None:
             self.mixed_audio =  self.song_1_graph.audio_file.audio_data
             self.weights_slider.setValue(100)
             self.weights_slider.setDisabled(True)
+            self.number_of_songs = 1
 
-        else:
+        elif self.song_1_graph.audio_file.audio_data is not None and self.song_2_graph.audio_file.audio_data is not None:
+            self.weights_slider.setEnabled(True)
+            if self.number_of_songs == 1:
+                self.weights_slider.setValue(50)
+                self.number_of_songs = 2
+
             self.mixed_audio = self.song_1_graph.audio_file.audio_data * self.weights_slider.value()/ 100.0 + \
                                         self.song_2_graph.audio_file.audio_data * (1 - self.weights_slider.value()/ 100.0)
-            self.weights_slider.setEnabled(True)
 
     def detect_song(self):
         self.mix_songs()
