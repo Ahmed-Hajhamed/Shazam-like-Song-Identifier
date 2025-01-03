@@ -12,7 +12,7 @@ class Main(UI.Ui_MainWindow, QMainWindow):
         self.setup_UI(self)
         self.mixed_audio = None
         self.number_of_songs: int = 0
-        self.weights_slider.sliderReleased.connect(self.detect_song)
+        self.weights_slider.sliderReleased.connect(self.identify_song)
         self.load_database()
 
     def load_database(self):
@@ -48,7 +48,7 @@ class Main(UI.Ui_MainWindow, QMainWindow):
             self.mixed_audio = self.song_1_graph.audio_file.audio_data * self.weights_slider.value()/ 100.0 + \
                                         self.song_2_graph.audio_file.audio_data * (1 - self.weights_slider.value()/ 100.0)
 
-    def detect_song(self):
+    def identify_song(self):
         self.mix_songs()
 
         if self.mixed_audio is not None:

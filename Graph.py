@@ -4,11 +4,11 @@ import MediaPlayer
 import AudioFile
 
 
-class Graph():
-    def __init__(self, MainWindow, centralWidget):
+class Graph:
+    def __init__(self, MainWindow):
         super().__init__()
         self.MainWindow = MainWindow
-        self.plot_widget = CustomPlotWidget(self, centralWidget)
+        self.plot_widget = CustomPlotWidget(self)
         self.audio_file = AudioFile.AudioFile()
         self.media_player = MediaPlayer.AudioPlayerWidget()
         self.layout = QVBoxLayout()
@@ -36,12 +36,12 @@ class Graph():
             self.title_label.setText(self.audio_file.song_name)
             self.set_plot_limits()
 
-            self.MainWindow.detect_song()
+            self.MainWindow.identify_song()
             self.MainWindow.update_weights_label(self.MainWindow.weights_slider.value())
 
     def set_plot_limits(self):
         """Set the plot limits based on the loaded data."""
-        if len(self.audio_file.time_data)>0:
+        if len(self.audio_file.time_data) > 0:
             x_max = self.audio_file.duration
 
             y_min = min(self.audio_file.audio_data)
@@ -65,14 +65,16 @@ class Graph():
     def reset_shading_region(self):
         self.shading_region.setRegion([0, 0])
 
-def truncate_to_3_decimals(number):
-    return int(number * 1000) / 1000
 
 class CustomPlotWidget(pg.PlotWidget):
-    def __init__(self, graph, parent=None):
-        super().__init__(parent)
+    def __init__(self, graph: Graph):
+        super().__init__()
         self.graph = graph
 
     def mouseDoubleClickEvent(self, event):
         if event.button() == 1:  
             self.graph.load_audio()
+
+
+def truncate_to_3_decimals(number):
+    return int(number * 1000) / 1000

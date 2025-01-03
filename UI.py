@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import(QLabel, QGridLayout, QFrame, QSlider, QTableWidget, QWidget, QSizePolicy)
+from PyQt5.QtWidgets import QLabel, QGridLayout, QFrame, QSlider, QTableWidget, QWidget
 
 import Graph
 
@@ -19,8 +19,8 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet(STYLESHEET)
         self.centralwidget = QWidget()
 
-        self.song_1_graph = Graph.Graph(MainWindow, self.centralwidget)
-        self.song_2_graph = Graph.Graph(MainWindow, self.centralwidget)
+        self.song_1_graph = Graph.Graph(MainWindow)
+        self.song_2_graph = Graph.Graph(MainWindow)
 
         self.song_1_graph.media_player.set_other_players([self.song_2_graph.media_player])
         self.song_2_graph.media_player.set_other_players([self.song_1_graph.media_player])
@@ -45,8 +45,6 @@ class Ui_MainWindow(object):
         self.table_Widget.setRowCount(10)
         self.table_Widget.setColumnCount(2)
         self.table_Widget.setHorizontalHeaderLabels(["Songs", "Similarity %"])
-        self.table_Widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
 
         self.line_1 =  create_line(horizontal= True)
         self.line_2 =  create_line()
