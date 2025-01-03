@@ -25,4 +25,8 @@ class AudioFile:
         if self.file_path:
             self.audio_data, self.sampling_rate = librosa.load(self.file_path, duration = self.duration, sr= self.sampling_rate)
             self.song_name =  (os.path.splitext(os.path.basename(self.file_path))[0])
+
+            self.audio_data = np.pad(self.audio_data,
+                                (0, self.duration * self.sampling_rate - len(self.audio_data)), "symmetric")
+            
             self.time_data = np.linspace(0, len(self.audio_data)/ self.sampling_rate, len(self.audio_data))
