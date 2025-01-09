@@ -23,7 +23,7 @@ A Python desktop application that identifies songs and enables users to mix song
 
 1. Clone the repository:
    ```bash
-   https://github.com/Ahmed-Hajhamed/Shazam-like-Song-Identifier
+   https://github.com/Ahmed-Hajhamed/Shazam-like-Song-Identifier.git
 
 2. Install dependencies:
     ```bash
@@ -35,13 +35,14 @@ A Python desktop application that identifies songs and enables users to mix song
     python app.py
     ```
 
--Load songs by double-clicking the graphs.
--Mix songs using the slider to adjust the weighted average.
--View matching results in the table.
--Use the media players to listen to and seek through the songs.
--To create a custom database:
--Add your folder of music to the appropriate directory.
--Run ```bash FeatureExtraction.py ``` to extract features.
+- Load songs by double-clicking the graphs.
+- Mix songs using the slider to adjust the weighted average.
+- View matching results in the table.
+- Use the media players to listen to and seek through the songs.
+- To create a custom database of music:
+  1. Add your folder of music to ```bash process_folder("path_to_folder")``` function in FeatureExtraction.py. Make sure all audio files are in the subfolder.
+  2. Run ```bash FeatureExtraction.py ``` to create the database and you are ready to go!
+
 
 Requirements
 Python: Version 3.8 or higher
