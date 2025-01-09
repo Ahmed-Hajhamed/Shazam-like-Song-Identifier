@@ -35,13 +35,13 @@ A Python desktop application that identifies songs and enables users to mix song
     python app.py
     ```
 
--Load songs by double-clicking the graphs.
--Mix songs using the slider to adjust the weighted average.
--View matching results in the table.
--Use the media players to listen to and seek through the songs.
--To create a custom database of music:
-  -Add your folder of music to ```bash process_folder("path_to_folder")``` function in FeatureExtraction.py. Make sure all audio files are in the subfolder.
-  -Run ```bash FeatureExtraction.py ``` to create the database and you are ready to go!
+--Load songs by double-clicking the graphs.
+--Mix songs using the slider to adjust the weighted average.
+--View matching results in the table.
+--Use the media players to listen to and seek through the songs.
+--To create a custom database of music:
+  --Add your folder of music to ```bash process_folder("path_to_folder")``` function in FeatureExtraction.py. Make sure all audio files are in the subfolder.
+  --Run ```bash FeatureExtraction.py ``` to create the database and you are ready to go!
 
 
 Requirements
